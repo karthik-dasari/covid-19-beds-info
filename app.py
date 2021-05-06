@@ -9,8 +9,8 @@ app=Flask(__name__)
 
 app.secret_key='abcdefghijklmnopqrstuvwxyz'
 
-@app.route('/')
-@app.route('/home')
+@app.route('/', methods = ['POST','GET'])
+@app.route('/home', methods = ['POST','GET'])
 def main():
     url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
 
