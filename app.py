@@ -31,7 +31,7 @@ def main():
     # soup = BeautifulSoup(html, "lxml")
 
     # i=0
-    # a=[]
+    a=[]
     # for child in soup.find('tbody').children:
     #     b=[]
     #     for td in child:
