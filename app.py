@@ -58,11 +58,11 @@ def district(name_data):
 
     driver.get(url)
 
-    time.sleep(5)
+    time.sleep(3)
 
     driver.find_element_by_link_text(name_data).click()
     
-    time.sleep(5)
+    time.sleep(2)
 
     html = driver.page_source
 
