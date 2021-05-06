@@ -12,34 +12,34 @@ app.secret_key='abcdefghijklmnopqrstuvwxyz'
 @app.route('/', methods = ['POST','GET'])
 @app.route('/home', methods = ['POST','GET'])
 def main():
-    url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
+    # url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
 
 
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+    # chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--disable-gpu')
+    # chrome_options.add_argument('--no-sandbox')
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
 
-    driver.get(url)
+    # driver.get(url)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    html = driver.page_source
+    # html = driver.page_source
 
-    soup = BeautifulSoup(html, "lxml")
+    # soup = BeautifulSoup(html, "lxml")
 
-    i=0
-    a=[]
-    for child in soup.find('tbody').children:
-        b=[]
-        for td in child:
-            if str(type(td))=="<class 'bs4.element.Tag'>":
-                b.append(td.text)
-        a.append(b)
-    del a[0]
-    del a[13]
+    # i=0
+    # a=[]
+    # for child in soup.find('tbody').children:
+    #     b=[]
+    #     for td in child:
+    #         if str(type(td))=="<class 'bs4.element.Tag'>":
+    #             b.append(td.text)
+    #     a.append(b)
+    # del a[0]
+    # del a[13]
 
     return render_template('index.html',data=a)
 
