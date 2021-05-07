@@ -9,22 +9,23 @@ app=Flask(__name__)
 
 app.secret_key='abcdefghijklmnopqrstuvwxyz'
 
-url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
-
-
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument('--no-sandbox')
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
-
-driver.get(url)
-
 @app.route('/', methods = ['POST','GET'])
 @app.route('/home', methods = ['POST','GET'])
 def main():
+    url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
+
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument('--no-sandbox')
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+
+    driver.get(url)
+
+    time.sleep(2)
 
     html = driver.page_source
 
@@ -45,6 +46,20 @@ def main():
 
 @app.route('/district/<string:name_data>', methods = ['POST','GET'])
 def district(name_data):
+
+    url = "http://dashboard.covid19.ap.gov.in/ims/hospbed_reports/"
+
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+
+    driver.get(url)
+
+    time.sleep(3)
 
     driver.find_element_by_link_text(name_data).click()
     
